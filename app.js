@@ -1,17 +1,20 @@
 const express = require ('express');
 const app = express();
 const moviesRouter = require('./routes/movies');
+const path = require('path');
 
-//template engine
+//view engine
 app.set('view engine', 'ejs');
-app.use(express.static(__dirname + '/public'));
+app.set('views', path.join(__dirname, '/views'));
 
-app.listen(300,function(){
-    console.log('running on 3000');
+app.listen(3010,function(){
+    console.log('running on 3010');
 });
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'public')));
 
 
-//rutas
-app.use('/' , moviesRouter);
+app.use('/movies' , moviesRouter);
 
 module.exports = app;

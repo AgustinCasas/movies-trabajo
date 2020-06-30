@@ -6,21 +6,12 @@
     <title>Movies</title>
 </head>
 <body>
-    <h1>Listado de películas</h1>
-    <form action="/movies/search" method="POST">
-        <input type="text" name="buscador" placeholder="Buscador">
-        <select name="filtrar">
-            <option value="length">Length</option>
-            <option value="awards">Awards</option>
-            <option value="rating">Rating</option>
-        </select>
-    </form>
+    <h1>Listado de Películas</h1>
     <ul>
         <% for (let i = 0; i < result.length; i++) {  %> 
             <li>
               <a href="/movies/detail/<%= result[i].id %>"><%= result[i].title %></a>
             </li>
-
         <% } %> 
     </ul>
 </body>
